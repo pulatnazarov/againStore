@@ -70,7 +70,7 @@ func Dell(name string) {
 	for i, p := range list {
 		if p.Name == name {
 			del(i, &list)
+			write(list)
 		}
 	}
-	write(list)
 }
