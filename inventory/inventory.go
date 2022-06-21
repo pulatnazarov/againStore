@@ -37,7 +37,7 @@ new:
 		goto new
 	}
 	if x == 1 {
-		
+
 	} else {
 
 	}
