@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"github.com/againStore/data"
+	"github.com/againStore/dealer"
 	"os"
 	"strconv"
 )
@@ -41,21 +42,30 @@ quan:
 		fmt.Println("Enter positive number!")
 		goto quan
 	}
-	dealer.Add(name, quantity)
+	d := dealer.Dealer{}
+	d.Add(name, uint64(quantity))
 }
 
-func Sell(name string, quantity uint64) bool {
+func Sell(name string, quantity uint64) (uint64, bool) {
 	price, b := data.Sell(name, quantity)
 	if b {
-		basket.Cash(name, quantity, price)
 		fmt.Println("Added to your basket!")
-		return true
+		return price, true
 	}
+	d := dealer.Dealer{}
 	fmt.Println("We dont have or there is not enough amount of this product!\nWe will bring it next time!")
-	dealer.Add(name, quantity)
-	return false
+	d.Add(name, quantity)
+	return 0, false
 }
 
 func (i Inventory) Delete() {
-	
+again:
+	fmt.Print("Name of product: ")
+	sentence, er := RightInput()
+	if er != nil {
+		fmt.Errorf("error:", er)
+		goto again
+	}
+	name := sentence[:len(sentence)-1]
+	data.Dell(name)
 }
