@@ -46,16 +46,16 @@ quan:
 	d.Add(name, uint64(quantity))
 }
 
-func Sell(name string, quantity uint64) (uint64, bool) {
-	price, b := data.Sell(name, quantity)
+func Sell(name string, quantity uint64) (uint64, uint64, bool) {
+	price, originPrice, b := data.Sell(name, quantity)
 	if b {
 		fmt.Println("Added to your basket!")
-		return price, true
+		return price, originPrice, true
 	}
 	d := dealer.Dealer{}
 	fmt.Println("We dont have or there is not enough amount of this product!\nWe will bring it next time!")
 	d.Add(name, quantity)
-	return 0, false
+	return 0, 0, false
 }
 
 func (i Inventory) Delete() {

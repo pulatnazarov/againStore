@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/againStore/boss"
 	"github.com/againStore/inventory"
 	"github.com/againStore/product"
 	"github.com/againStore/store"
@@ -11,10 +12,42 @@ import (
 var List = product.List{}
 
 func main() {
-	start()
+	boss := manager()
+	start(boss)
 }
 
-func start() {
+func manager() boss.Boss {
+	fmt.Print("What is your name?: ")
+	sentence, er := inventory.RightInput()
+	if er != nil {
+		fmt.Errorf("error")
+		return boss.Boss{}
+	}
+	sentence = sentence[:len(sentence)-1]
+	name := sentence
+	fmt.Print("Set password: ")
+	sentence, er = inventory.RightInput()
+	if er != nil {
+		fmt.Errorf("error")
+		return boss.Boss{}
+	}
+	sentence = sentence[:len(sentence)-1]
+	password := sentence
+	fmt.Print("Budget of your store: ")
+	sentence, er = inventory.RightInput()
+	if er != nil {
+		fmt.Errorf("error")
+		return boss.Boss{}
+	}
+	sentence = sentence[:len(sentence)-1]
+	budget, er := strconv.Atoi(sentence)
+	if er != nil {
+		panic(er)
+	}
+	return boss.NewBoss(name, password, uint64(budget))
+}
+
+func start(b boss.Boss) {
 	for {
 	end:
 		fmt.Print(`
@@ -38,7 +71,7 @@ func start() {
 			goto end
 		}
 		if x == 1 {
-			//boss.Bossmain()
+			boss.MainBoss(b)
 		} else if x == 2 {
 			s := store.Store{}
 			s.Sell()

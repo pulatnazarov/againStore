@@ -1,7 +1,7 @@
 [
 	{
 		"Name": "Apple",
-		"Quantity": 40,
+		"Quantity": 41,
 		"Price": 5,
 		"OriginPrice": 3
 	},
@@ -13,8 +13,14 @@
 	},
 	{
 		"Name": "Banano",
-		"Quantity": 5,
+		"Quantity": 8,
 		"Price": 4,
 		"OriginPrice": 4
+	},
+	{
+		"Name": "Pencil",
+		"Quantity": 1,
+		"Price": 20,
+		"OriginPrice": 17
 	}
 ]

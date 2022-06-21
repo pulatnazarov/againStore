@@ -3,6 +3,7 @@ package store
 import (
 	"fmt"
 	"github.com/againStore/basket"
+	"github.com/againStore/boss"
 	"strconv"
 
 	"github.com/againStore/inventory"
@@ -70,8 +71,10 @@ start:
 		fmt.Println("enter positive number")
 		goto start
 	}
-	price, bul := inventory.Sell(sentence, uint64(x))
+	price, originPrice, bul := inventory.Sell(sentence, uint64(x))
 	if bul {
+		boss.BassFile.Budget += originPrice * uint64(x)
+		boss.BassFile.Profit += (price - originPrice) * uint64(x)
 		Bs.Append(sentence, uint64(x), price)
 	}
 }
