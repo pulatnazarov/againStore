@@ -6,14 +6,8 @@
 		"OriginPrice": 0
 	},
 	{
-		"Name": "Pen",
-		"Quantity": 20,
-		"Price": 2,
-		"OriginPrice": 0
-	},
-	{
 		"Name": "Book",
-		"Quantity": 15,
+		"Quantity": 13,
 		"Price": 3,
 		"OriginPrice": 0
 	},
