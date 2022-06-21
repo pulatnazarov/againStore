@@ -37,8 +37,12 @@ new:
 		goto new
 	}
 	if x == 1 {
-
-	} else {
 		
+	} else {
+
 	}
+}
+
+func (i Inventory) Delete() {
+
 }
