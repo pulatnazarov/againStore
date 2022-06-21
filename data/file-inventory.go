@@ -35,7 +35,7 @@ func Add(name string, n, pr, op uint64) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	err = os.WriteFile("data.json", js, 0600)
+	err = os.WriteFile("data/data.json", js, 0600)
 	if err != nil {
 		return false, err
 	}
