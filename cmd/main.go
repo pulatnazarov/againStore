@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/againStore/boss"
 	"github.com/againStore/inventory"
 	"github.com/againStore/product"
 	"github.com/againStore/store"
@@ -34,17 +33,17 @@ func start() {
 			fmt.Printf("error: %d", er)
 			goto end
 		}
-		if x > 2 || x < 1 {
+		if x > 3 || x < 1 {
 			fmt.Println("Enter one of them")
 			goto end
 		}
 		if x == 1 {
-			boss.Bossmain()
+			//boss.Bossmain()
 		} else if x == 2 {
 			s := store.Store{}
 			s.Sell()
 		} else {
-			break
+			return
 		}
 	}
 }
