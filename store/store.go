@@ -64,9 +64,8 @@ start:
 		fmt.Println("enter positive number")
 		goto start
 	}
-	
-}
+	price, bul := inventory.Sell(sentence, quantity)
+	if bul {
 
-func (s Store) List() {
-
+	}
 }
