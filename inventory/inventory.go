@@ -39,6 +39,18 @@ new:
 	if x == 1 {
 
 	} else {
-		
+
 	}
+}
+
+func Sell(name string, quantity uint64) {
+	//if data.Sell(name, quantity) {
+	//
+	//} else {
+	//	fmt.Println("We dont have this product!")
+	//}
+}
+
+func (i Inventory) Delete() {
+
 }
