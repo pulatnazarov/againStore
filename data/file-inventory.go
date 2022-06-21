@@ -41,3 +41,6 @@ func Add(name string, n, pr, op uint64) (bool, error) {
 	}
 	return true, nil
 }
+func Sell() {
+
+}
