@@ -44,7 +44,7 @@ func write(list product.List) {
 		panic(err)
 	}
 }
-func Sell(name string, q uint64) (uint64, bool) {
+func Sell(name string, q uint64) (uint64, uint64, bool) {
 	a := int(q)
 	list := List()
 	for i, p := range list {
@@ -53,17 +53,17 @@ func Sell(name string, q uint64) (uint64, bool) {
 			if pq-a > 0 {
 				list[i].Quantity -= q
 				write(list)
-				return p.Price, true
+				return p.Price, p.OriginPrice, true
 			} else if pq-a < 0 {
-				return 0, false
+				return 0, 0, false
 			} else {
 				del(i, &list)
 				write(list)
-				return p.Price, true
+				return p.Price, p.OriginPrice, true
 			}
 		}
 	}
-	return 0, false
+	return 0, 0, false
 }
 func del(i int, l *product.List) {
 	*l = append((*l)[:i], (*l)[i+1:]...)

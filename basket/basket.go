@@ -27,7 +27,7 @@ func (t *Trash) Show() {
 	fmt.Fprintln(w, "Your basket")
 	fmt.Fprintln(w, "#\t\t\t\tname\t\t\t\tquantity\t\t\t\t")
 	for i, p := range *t {
-		fmt.Fprintf(w, "%d\t\t\t\t%s\t\t\t\t%d\t\t\t\t", i+1, p.Name, p.Quantity)
+		fmt.Fprintf(w, "%d\t\t\t\t%s\t\t\t\t%d\t\t\t\t\n", i+1, p.Name, p.Quantity)
 	}
 	w.Flush()
 }
@@ -38,7 +38,7 @@ func (t *Trash) Check() {
 	fmt.Fprintln(w, "Your check")
 	fmt.Fprintln(w, "%#\t\t\t\tname\t\t\t\tquantity\t\t\t\tprice")
 	for i, p := range *t {
-		fmt.Fprintf(w, "%d\t\t\t\t%s\t\t\t\t%d\t\t\t\t%d", i+1, p.Name, p.Quantity, p.Price)
+		fmt.Fprintf(w, "%d\t\t\t\t%s\t\t\t\t%d\t\t\t\t%d\n", i+1, p.Name, p.Quantity, p.Price)
 		sum += p.Price * p.Quantity
 	}
 	w.Flush()
