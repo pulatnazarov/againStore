@@ -52,7 +52,7 @@ func Bossmain() {
 			fmt.Println("Invailed choice!")
 		} else {
 			if boss == 1 {
-				
+
 			}
 		}
 	}
