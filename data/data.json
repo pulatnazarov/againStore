@@ -1,0 +1,20 @@
+[
+  {
+    "Name":          "Apple",
+    "Quantity":      10,
+    "Price":         5,
+    "OriginalPrice": 3
+  },
+  {
+    "Name":          "Pen",
+    "Quantity":      20,
+    "Price":         2,
+    "OriginalPrice": 1
+  },
+  {
+   "Name":          "Book",
+   "Quantity":      15,
+   "Price":         3,
+    "OriginalPrice": 1
+  }
+]
