@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/againStore/boss"
 	"github.com/againStore/inventory"
 	"github.com/againStore/product"
+	"github.com/againStore/store"
 	"strconv"
 )
 
@@ -37,9 +39,10 @@ func start() {
 			goto end
 		}
 		if x == 1 {
-			//boss.Boss()
+			boss.Bossmain()
 		} else if x == 2 {
-			//store.Sell()
+			s := store.Store{}
+			s.Sell()
 		} else {
 			break
 		}
