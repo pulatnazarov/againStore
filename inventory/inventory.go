@@ -3,6 +3,7 @@ package inventory
 import (
 	"bufio"
 	"fmt"
+	"github.com/againStore/data"
 	"os"
 	"strconv"
 )
@@ -16,41 +17,45 @@ func RightInput() (string, error) {
 }
 
 func (i Inventory) AddOrIncrease() {
-new:
-	fmt.Print(`
-	1 - Add
-	2 - Increase
-`)
+again:
+	fmt.Print("Name of product: ")
 	sentence, er := RightInput()
 	if er != nil {
-		fmt.Errorf("err", er)
-		goto new
+		fmt.Errorf("error:", er)
+		goto again
+	}
+	name := sentence[:len(sentence)-1]
+quan:
+	fmt.Print("Quantity of product: ")
+	sentence, err := RightInput()
+	if err != nil {
+		fmt.Errorf("error", er)
+		goto quan
 	}
 	sentence = sentence[:len(sentence)-1]
-	x, er := strconv.Atoi(sentence)
+	quantity, er := strconv.Atoi(sentence)
 	if er != nil {
-		fmt.Errorf("error", er)
-		goto new
+		fmt.Errorf("Error", er)
 	}
-	if x != 2 || x != 1 {
-		fmt.Println("Enter one of them!")
-		goto new
+	if quantity <= 0 {
+		fmt.Println("Enter positive number!")
+		goto quan
 	}
-	if x == 1 {
-
-	} else {
-
-	}
+	dealer.Add(name, quantity)
 }
 
-func Sell(name string, quantity uint64) {
-	//if data.Sell(name, quantity) {
-	//
-	//} else {
-	//	fmt.Println("We dont have this product!")
-	//}
+func Sell(name string, quantity uint64) bool {
+	price, b := data.Sell(name, quantity)
+	if b {
+		basket.Cash(name, quantity, price)
+		fmt.Println("Added to your basket!")
+		return true
+	}
+	fmt.Println("We dont have or there is not enough amount of this product!\nWe will bring it next time!")
+	dealer.Add(name, quantity)
+	return false
 }
 
 func (i Inventory) Delete() {
-
+	
 }
