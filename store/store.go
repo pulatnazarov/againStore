@@ -6,7 +6,6 @@ type Store struct {
 }
 
 func (s Store) Sell() {
-	end:
 	fmt.Printf(`
 	1-Shop
 	2-List
